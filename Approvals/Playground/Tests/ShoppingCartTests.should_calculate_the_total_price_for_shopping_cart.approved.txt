@@ -1,0 +1,3 @@
+Total products in cart: 2
+Products: [Product: iPad Price: 500, Product: Mouse Price: 20]
+Total price: 520
