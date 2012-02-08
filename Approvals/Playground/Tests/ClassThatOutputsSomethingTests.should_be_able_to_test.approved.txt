@@ -1,0 +1,4 @@
+Event: INSERT INTO TableName (SomeColumn) VALUES ()
+Event: INSERT INTO TableName (SomeColumn) VALUES ()
+Event: INSERT INTO TableName (SomeColumn) VALUES ()
+Event: INSERT INTO TableName (SomeColumn) VALUES ()

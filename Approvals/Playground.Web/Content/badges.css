@@ -1,0 +1,36 @@
+﻿html,body,div,span,h1,h2,h3,h4,h5,h6,p,em,img,strong,ol,ul,li,form,label,footer, header { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; } body { line-height: 1 } article,footer,header { display: block } a { margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent; } input,select { vertical-align: middle }
+body { background: #d7edf5 url(./img/back.png) repeat; color: #006587; font: 15px/1.75 sans-serif; overflow-y: scroll; padding-bottom: 3em; text-align: center; }
+#container { width: 70%; margin: 0 auto; max-width: 1280px; position: relative; }
+.border { height: 8px; background: #004d69; -webkit-box-shadow: 0px 3px 10px 1px #a8e1f7; -moz-box-shadow: 0px 3px 10px 1px #a8e1f7; box-shadow: 0px 3px 10px 1px #a8e1f7;}
+#loading { display: inline; }
+header { display: block; padding-top: 26px; }
+header h1 { display: block; font-family: corn-dog, serif; font-size: 43px; text-align: left; float: left; }
+header h1 a { display: inline; color: #004d69; text-decoration: none }
+header .octocat { display: inline; position: relative; background: url(./img/octocat.png); height: 64px; width: 64px; margin-top: 8px; opacity: 0.6; float: right; }
+#main { clear: both; display: block; margin: 0 auto; padding: 10px 0px 10px 0px;  }
+.outer { min-height: 360px; padding: 4em; }
+#box { position: relative; display: block; height: auto; min-height: 360px; background: #82bbcf; -webkit-border-radius: 15px; -moz-border-radius: 15px; border-radius: 15px; opacity: 0.7;  border: 1px solid #80a0ab; }
+.default-shadow { -webkit-box-shadow: 1px 1px 15px 4px #73868c; -moz-box-shadow: 1px 1px 15px 4px #73868c; box-shadow: 1px 1px 15px 4px #73868c; }
+#main p { font-size: x-large; }
+#github-account { width: 50%; font-size: 20px; padding: .5em .5em; position: relative; top: 146px; border: 1px solid #003140; outline: 10px solid rgba(89, 116, 125, 0.6);  }
+button.submit { width: 120px; height: 46px; position: relative; top: 146px; left: 10px; }
+a { color: #2ea0c9 }
+.badges { position: relative; display: block; height: auto; min-height: 360px; } 
+.badge { display:inline-block; float: left; width: 240px; height: 140px; opacity: 0.8; margin-left: 6px; margin-bottom: 22px; }
+.body
+{
+    height: 90%; width: 90%; background: #ededed; background: -moz-linear-gradient(top, #ededed 0%, #d8d8d8 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#d8d8d8)); background: -webkit-linear-gradient(top, #ededed 0%,#d8d8d8 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top, #ededed 0%,#d8d8d8 100%);  background: -ms-linear-gradient(top, #ededed 0%,#d8d8d8 100%); background: linear-gradient(top, #ededed 0%,#d8d8d8 100%); /* W3C */
+    -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;
+    border: 1px solid #c9c9c9;
+}
+.golden-outline { -webkit-box-shadow: 0px 0px 10px 10px #ffcc00; -moz-box-shadow: 0px 0px 10px 10px #ffcc00; box-shadow: 0px 0px 10px 10px #ffcc00; } 
+.silver-outline { -webkit-box-shadow: 0px 0px 10px 10px #c7c7c7; -moz-box-shadow: 0px 0px 10px 10px #c7c7c7; box-shadow: 0px 0px 10px 10px #c7c7c7; } 
+.bronze-outline { -webkit-box-shadow: 0px 0px 10px 10px #b36020; -moz-box-shadow: 0px 0px 10px 10px #b36020; box-shadow: 0px 0px 10px 10px #b36020; } 
+.wooden-outline { -webkit-box-shadow: 0px 0px 10px 10px #4f3f34; -moz-box-shadow: 0px 0px 10px 10px #4f3f34; box-shadow: 0px 0px 10px 10px #4f3f34; } 
+.badge h2 { font-size: 22px; font-family: 'Open Sans Condensed', sans-serif; text-shadow: 0px 2px 2px #737373; }
+.badge p { display: block; position:relative; height: auto; padding: 4px; top: 20px !important;  font-size: 20px !important; font-family: blambot-casual, sans-serif; text-align: center; color: #323642; line-height: 20px; }
+.badges span.info { font-size: 32px; position: relative; top: 50px; }
+.badges span.error { font-size: 32px; position: relative; top: 50px; color: #a19191; }
+.badges span.earnings { display: inline-block !important; width: 100%; height: 30px; }
+footer { clear: both; }
+footer p { font-family: 'Open Sans Condensed', sans-serif; }
