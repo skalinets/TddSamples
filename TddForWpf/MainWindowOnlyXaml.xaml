@@ -17,7 +17,7 @@
         <!-- Экземпляр модели калькулятора -->
         <!-- Numbers="1,2,3" - установка данных -->
         <!-- Calculator="{StaticResource Calculator}" - ссылка на экземпляр калькулятора -->
-        <tdd:CalculatorViewModel x:Key="View" Numbers="1,2,3" Calculator="{StaticResource Calculator}" />
+        <tdd:CalculatorViewModel x:Key="View" Numbers="1,2,3" Сalculator="{StaticResource Calculator}" />
 
     </Window.Resources>
 
