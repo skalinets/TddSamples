@@ -45,9 +45,9 @@ namespace TddForWpf
 
         private void AppStartup(object sender, StartupEventArgs e)
         {                       
-            //MainWindow = new MainWindow();
-            //MainWindow = new MainWindowOnlyXaml();
-            //MainWindow = new MainWindowWithDescription();
+//            MainWindow = new MainWindow();
+//            MainWindow = new MainWindowOnlyXaml();
+//            MainWindow = new MainWindowWithDescription();
         }
 
     }

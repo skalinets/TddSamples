@@ -63,7 +63,7 @@ namespace TddForWpf
             var button = (Button) window.FindName("CalculateButton");
 
             // "Бах" теста.
-            // button.Command = System.Windows.Input.ApplicationCommands.Cut;
+             button.Command = System.Windows.Input.ApplicationCommands.Cut;
 
             // act
             var result = button.Command;

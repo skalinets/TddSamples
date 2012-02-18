@@ -14,7 +14,6 @@ namespace TddForWpf
             CommandBindings.Add(new CommandBinding(App.Calculate, CalculateExecuted));
 
             var view = App.Kernel.Get<CalculatorViewModel>();
-            view.Calculator = App.Kernel.Get<ICalculator>();
 
             DataContext = view;
         }
