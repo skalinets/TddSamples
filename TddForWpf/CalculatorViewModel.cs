@@ -15,7 +15,7 @@ namespace TddForWpf
             this.Сalculator = calculator;            
         }
 
-        private ICalculator Сalculator { get; set; }
+        public ICalculator Сalculator { get; set; }
 
         private string result;
         public string Result
