@@ -11,10 +11,9 @@ namespace MvpDemo
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Model.Input = TextBox1.Text;
-            Calculate(this, EventArgs.Empty);
+            Calculate(this, new CalculatorArgs{Numbers = TextBox1.Text});
         }
 
-        public event EventHandler Calculate;
+        public event EventHandler<CalculatorArgs> Calculate;
     }
 }

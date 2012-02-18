@@ -8,6 +8,7 @@ namespace NHTests
         {
             Id(_ => _.ID);
             Map(_ => _.Name);
+//            Map(_ => _.City);
         }
     }
 }

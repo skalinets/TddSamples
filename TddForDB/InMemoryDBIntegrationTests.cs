@@ -23,9 +23,11 @@ namespace NHTests
         {
             object id;
 
+            var author = Author.Create("test author");
+//            author.City = "twrw";
             using (ITransaction tx = session.BeginTransaction())
             {
-                id = session.Save(Author.Create("test author"));
+                id = session.Save(author);
                 tx.Commit();
             }
 
@@ -33,8 +35,9 @@ namespace NHTests
 
             using (ITransaction tx = session.BeginTransaction())
             {
-                var author = session.Get<Author>(id);
-                author.Name.Should().Be("test author");
+                var otherAuthor = session.Get<Author>(id);
+                otherAuthor.ShouldHave().AllProperties().EqualTo(author);
+//                author.Name.Should().Be("test author");
                 tx.Commit();
             }
         }

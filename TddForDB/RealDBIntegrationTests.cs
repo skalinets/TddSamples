@@ -13,6 +13,7 @@ namespace NHTests
     {
         private const string connectionString = "Data Source=.;Initial Catalog=TestBlogs;Integrated Security=True";
         private readonly IStatelessSession session = CreateSessionFactory().OpenStatelessSession();
+//        private readonly IStatelessSession session = CreateSessionFactory().OpenStatelessSession();
 
         #region IDisposable Members
 
@@ -23,7 +24,7 @@ namespace NHTests
 
         #endregion
 
-        [Fact(Skip = "do not run it"), AutoRollback]
+        [Fact(), AutoRollback]
         public void RealTests()
         {
             object authorID;
@@ -57,7 +58,9 @@ namespace NHTests
 
             #region Magic
 
-            object a = Database.OpenConnection(connectionString).Authors.FindByID(authorID); 
+            object a = Database.OpenConnection(connectionString)
+                .Authors
+                .FindByName(authorName); 
 
 //                Console.Out.WriteLine("a.ID = {0}", ((dynamic) a).ID);
             dynamic d = a;
@@ -72,7 +75,7 @@ namespace NHTests
         {
             return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2005.ConnectionString(connectionString))
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Author>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<AuthorMap>())
                 .BuildSessionFactory();
         }
     }
