@@ -26,7 +26,7 @@ namespace MvpDemo
             // arrange
             calculator.Add(numbers).Returns(calculationResult);
 
-            var presenter = new CalculatorPresenter(calculatorView, calculator);
+            var presenter = new CalculatorPresenter(calculatorView, calculator, null);
             calculatorView.Model.Returns(calculatorModel);
 
             // act
@@ -35,5 +35,32 @@ namespace MvpDemo
             // assert
             calculatorView.Model.Result.Should().Be(calculationResult);
         }
+
+        [Fact]
+        public void should_validate_password()
+        {
+            // arrange
+            var passwordValidator = Substitute.For<IPasswordValidator>();
+            string expectedResult = "dsafsf";
+            passwordValidator.Validate("password").Returns(expectedResult);
+
+            new CalculatorPresenter(calculatorView, calculator, passwordValidator);
+
+            // act
+            calculatorView.ValidatePassword += Raise.EventWith(calculatorView, new ValidatePasswordArgs {Password = "password"});
+
+            // assert
+            calculatorView.Model.PasswordValidationResult.Should().Be(expectedResult);
+        }
+    }
+
+    public class ValidatePasswordArgs : EventArgs
+    {
+        public string Password { get; set; }
+    }
+
+    public interface IPasswordValidator
+    {
+        string Validate(string password);
     }
 }

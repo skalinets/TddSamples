@@ -15,5 +15,11 @@ namespace MvpDemo
         }
 
         public event EventHandler<CalculatorArgs> Calculate;
+        public event EventHandler<ValidatePasswordArgs> ValidatePassword;
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            ValidatePassword(this, new ValidatePasswordArgs{Password = TextBox2.Text});
+        }
     }
 }

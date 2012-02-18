@@ -17,8 +17,17 @@ namespace MvpDemo
         {
             var unityContainer = new UnityContainer();
             unityContainer.RegisterType<ICalculator, Calculator>();
+            unityContainer.RegisterType<IPasswordValidator, MegaPasswordValidator>();
 
             PresenterBinder.Factory = new UnityPresenterFactory(unityContainer);
+        }
+    }
+
+    internal class MegaPasswordValidator : IPasswordValidator
+    {
+        public string Validate(string password)
+        {
+            return password == "111" ? "OK" : "not ok";
         }
     }
 }
