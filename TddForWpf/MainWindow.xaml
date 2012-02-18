@@ -1,27 +1,34 @@
 ﻿<Window x:Class="TddForWpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:my="clr-namespace:TddForWpf" Loaded="Window_Loaded">
-    <Window.Resources>
-        <CollectionViewSource x:Key="calculatorViewModelViewSource" d:DesignSource="{d:DesignInstance my:CalculatorViewModel, CreateList=True}" />
-    </Window.Resources>
-    <Grid>
-        <Grid DataContext="{StaticResource calculatorViewModelViewSource}" HorizontalAlignment="Left" Margin="21,28,0,0" Name="grid1" VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="18" />
-                <RowDefinition Height="16" />
-                <RowDefinition Height="29" />
-            </Grid.RowDefinitions>
-            <Label Content="Numbers:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
-            <TextBox Grid.Column="1" Grid.Row="0" Height="23" HorizontalAlignment="Left" Margin="3" Name="numbersTextBox" Text="{Binding Path=Numbers, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" Width="120" />
-            <Label Content="Result:" Grid.Row="1" HorizontalAlignment="Left" Margin="3,4,0,4" VerticalAlignment="Center" Grid.RowSpan="2" />
-            <Label Content="{Binding Path=Result}" Grid.Column="1" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="3,3,0,3" Name="resultLabel" VerticalAlignment="Center" Grid.RowSpan="2" />
-            <Button Content="Button" Grid.Column="1" Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="47,0,0,0" Name="button1" VerticalAlignment="Top" Width="75" Command="{Binding Path=Calculate}" />
-        </Grid>
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                
+        xmlns:tdd="clr-namespace:TddForWpf"
+        Title="Calculator" Padding="3" WindowStartupLocation="CenterScreen">
+            
+    <Grid Margin="3">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" Text="Numbers:" />        
+        <TextBox   Grid.Row="0" Grid.Column="1" Margin="3" Name="NumbersTextBox"
+                   Text="{Binding Path=Numbers, Mode=OneWayToSource}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="Result:" />
+        <TextBox   Grid.Row="1" Grid.Column="1" Margin="3" IsReadOnly="True" Name="ResultTextBox"
+                   Text="{Binding Path=Result, Mode=OneWay}" />
+
+        <Button    Grid.Row="3" Grid.Column="1" Margin="3" Padding="3" Content="Calculate" Name="CalculateButton"
+                   Command="{x:Static tdd:App.Calculate}" />
+        
     </Grid>
+    
 </Window>

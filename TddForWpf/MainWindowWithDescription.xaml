@@ -1,0 +1,65 @@
+﻿<Window x:Class="TddForWpf.MainWindowWithDescription"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tdd="clr-namespace:TddForWpf"
+        Title="Calculator" WindowStartupLocation="CenterScreen">
+    
+    <Grid Margin="3">
+
+        <Grid.ColumnDefinitions>
+            <!--
+            <ColumnDefinition Width="Auto" /> Подбирается автоматически, на основании содержимого.
+            <ColumnDefinition Width="1*" /> Соотношение размеров столбцов.
+            <ColumnDefinition Width="*" /> Занимает все оставшееся место.
+            <ColumnDefinition  /> - Занимает все оставшееся место.
+            -->
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--
+            TextBlock - лучше оптимизирован для отображения простого текста.
+            Grid.Row="0" Grid.Column="0" - позиция в таблице компоновки.            
+        -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" Text="Numbers:" />
+
+        <!--
+            Text="{Binding Path=Numbers, Mode=TwoWay}"            
+            В конструкторе формы, мы определили, что контекстом данных, для окна, будет
+            экземпляр CalculatorViewModel. Все дочерние элементы наследуют этот контекст, если 
+            явно его не указать для конкретного элемента. Для элемента TextBox мы установили 
+            привязку к свойству Numbers, объекта CalculatorViewModel. Что бы найти его
+            экземпляр, сначала просматривается свойство TextBox.DataContext, если оно пустое 
+            просматривается DataContext родительского элемента, в нашем случаи это Grid,
+            и т.д. вверх по иерархии.            
+            Атрибут Mode - указывает вид привязки:
+            OneWayToSource - только запись в модель.
+            OneWay - только чтение с модели.
+            TwoWay - чтение и запись.
+            Привязка работает только со свойствами.
+        -->
+        <TextBox   Grid.Row="0" Grid.Column="1" Margin="3"  Name="NumbersTextBox"
+                   Text="{Binding Path=Numbers, Mode=OneWayToSource}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="Result:" />
+        <TextBox   Grid.Row="1" Grid.Column="1" Margin="3" IsReadOnly="True" Name="ResultTextBox"
+                   Text="{Binding Path=Result, Mode=OneWay}" />
+
+        <!--
+            Связываем кнопку с командой, которую мы определили в главном окне.
+            Command="{x:Static tdd:MainWindow.Calculate}"
+            x:Static - указывает на то, что привязываемся к статическому элементу.
+            tdd:MainWindow.Calculate - Namespace:Type.Member
+        -->
+        <Button    Grid.Row="3" Grid.Column="1" Content="Calculate" Margin="3" Padding="3" Name="CalculateButton"
+                   Command="{x:Static tdd:App.Calculate}" />
+        
+    </Grid>
+</Window>

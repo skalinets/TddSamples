@@ -1,0 +1,76 @@
+﻿<Window x:Class="TddForWpf.MainWindowOnlyXaml"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tdd="clr-namespace:TddForWpf"
+        Title="MainWindowOnlyXaml" WindowStartupLocation="CenterScreen">
+          
+    <!-- Не для тестирования! Только для демонстрации работы с ресурсами. -->
+    
+    <Window.Resources>
+
+        <!-- Экземпляр команды -->
+        <RoutedCommand x:Key="Calculate" />
+
+        <!-- Экземпляр калькулятора -->
+        <tdd:Calculator x:Key="Calculator" />
+
+        <!-- Экземпляр модели калькулятора -->
+        <!-- Calculator="{StaticResource Calculator}" - установка ссылки на калькулятор -->
+        <!-- Numbers="1,2,3" - установка данных -->
+        <tdd:CalculatorViewModel x:Key="View" Calculator="{StaticResource Calculator}" Numbers="1,2,3" />
+
+    </Window.Resources>
+
+    <Window.CommandBindings>
+
+        <!-- Подписываем окно на обработку команды Calculate. -->
+        <!-- Подключаем метод обработки команды CalculateExecuted. -->
+        <CommandBinding Command="{StaticResource Calculate}" Executed="CalculateExecuted" />
+
+    </Window.CommandBindings>
+
+    <!-- Установка контекста формы. Ссылка на модель в ресурсах. -->
+    <Window.DataContext>
+        <Binding Source="{StaticResource View}"/>
+    </Window.DataContext>
+
+    <!-- Установка контекста формы. Создание нового экземпляра модели. Что бы использовать это вариант, необходимо закомментировать верхний. -->
+    <!--
+    <Window.DataContext>
+        <tdd:CalculatorViewModel Numbers="1,2,3">
+            <tdd:CalculatorViewModel.Calculator>
+                <tdd:Calculator />
+            </tdd:CalculatorViewModel.Calculator>
+        </tdd:CalculatorViewModel>
+    </Window.DataContext>
+    -->
+
+    <Grid Margin="3">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" Text="Numbers:" />
+        <TextBox   Grid.Row="0" Grid.Column="1" Margin="3" Name="NumbersTextBox"
+                   Text="{Binding Path=Numbers, Mode=OneWayToSource}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="Result:" />
+        <TextBox   Grid.Row="1" Grid.Column="1" Margin="3" IsReadOnly="True" Name="ResultTextBox"
+                   Text="{Binding Path=Result, Mode=OneWay}" />
+
+        <Button    Grid.Row="3" Grid.Column="1" Margin="3" Padding="3" Content="Calculate" Name="CalculateButton"
+                   Command="{StaticResource Calculate}" />
+
+    </Grid>
+</Window>
+
+

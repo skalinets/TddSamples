@@ -1,0 +1,20 @@
+﻿MainWindow.xaml - исходная форма, с тестируемым кодом.
+MainWindowWithDescription.xaml тоже что и MainWindow.xaml, но с описанием.
+MainWindowOnlyXaml.xaml - форма в которой вся инициализация и привязка данных в XAML разметки. В файле только логика (вычисление калькулятора).
+
+Что бы использовать каждую из форм, необходимо в файле App.xaml.cs убрать комментарий:
+
+private void AppStartup(object sender, StartupEventArgs e)
+{                       
+	//MainWindow = new MainWindow();
+    //MainWindow = new MainWindowOnlyXaml();
+    //MainWindow = new MainWindowWithDescription();
+}
+
+По умолчанию MainWindow.
+
+Добавил пару тестов XAML разметки. CalculatorXamlTests.cs А то получается в примере, тесты для бизнес логики, 
+которая к WPF почти никакого отношения не имеет.
+Насчет тестов не ручаюсь, я только учусь. 
+Но примеры показывают реальные проблемы в WPF приложениях. 
+Некоторые из них, это потеря контекста данных, неправильные выражения привязок, подпись на разные экземпляры команд и.д.
