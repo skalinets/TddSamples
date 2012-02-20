@@ -1,4 +1,3 @@
-
 using System.ComponentModel;
 using System.Globalization;
 
@@ -6,13 +5,17 @@ namespace TddForWpf
 {
     public class CalculatorViewModel : INotifyPropertyChanged
     {
+
+        public CalculatorViewModel()
+        {
+        }
         
         public CalculatorViewModel(ICalculator calculator)
         {
-            this.calculator = calculator;            
+            this.Сalculator = calculator;            
         }
 
-        private ICalculator calculator;
+        public ICalculator Сalculator { get; set; }
 
         private string result;
         public string Result
@@ -38,7 +41,7 @@ namespace TddForWpf
 
         public void Calculate()
         {
-            Result = calculator.Add(Numbers).ToString(CultureInfo.InvariantCulture);
+            Result = Сalculator.Add(Numbers).ToString(CultureInfo.InvariantCulture);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
